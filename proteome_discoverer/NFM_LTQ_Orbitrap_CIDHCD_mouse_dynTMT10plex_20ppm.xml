@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--The Workflow-->
+<Workflow Name="NFM_LTQ_Orbitrap_CIDHCD_mouse_dynTMT10plex_20ppm" Description="Workflow for LTQ OrbiXL TMT10plex samples processed by pyproteome" CreationDate="1/1/0001 12:00:00 AM" CreatedFromUser="White Lab" WaitForEarlierJobs="False" ContinueJob="False">
+	<WorkflowTree MergeSimilarIdentificationResults="False">
+		<WorkflowNode ProcessingNodeNumber="0" ProcessingNodeName="SpectrumFilesNode" FriendlyName="Spectrum Files" Description="Selects the spectrum file(s) to be processed." MainVersion="1" MinorVersion="3" Guid="848160ba-2f76-46ca-a281-f7bf66990a5b" Category="Data Input" ParentProcessingNodeNumber="-1" ProteinIdentificationGroupID="0" Comment="">
+			<ProcessingNodeInterfaces>
+				<ProcessingNodeInterface Kind="Output" Name="ISpectrumFilesSource" />
+				<ProcessingNodeInterface Kind="Functional" Name="IProcessingNode" />
+				<ProcessingNodeInterface Kind="Functional" Name="IStartProcessing" />
+			</ProcessingNodeInterfaces>
+			<ProcessingNodeParameters>
+				<ProcessingNodeParameter Name="SpectrumFileNames" FriendlyName="File Name(s)" Category="Input Data" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+			</ProcessingNodeParameters>
+		</WorkflowNode>
+		<WorkflowNode ProcessingNodeNumber="1" ProcessingNodeName="SpectrumSelectorNode" FriendlyName="Spectrum Selector" Description="Selects and retrieves the spectra for further processing." MainVersion="1" MinorVersion="25" Guid="238d2f70-3dd9-4e2b-a77d-f24933797cf6" Category="Spectrum &amp; Feature Retrieval" ParentProcessingNodeNumber="0" ProteinIdentificationGroupID="1" Comment="">
+			<ProcessingNodeInterfaces>
+				<ProcessingNodeInterface Kind="Input" Name="ISpectrumFilesSink" />
+				<ProcessingNodeInterface Kind="Output" Name="ISpectrumSource" />
+				<ProcessingNodeInterface Kind="Functional" Name="IProcessingNode" />
+			</ProcessingNodeInterfaces>
+			<ProcessingNodeParameters>
+				<ProcessingNodeParameter Name="PrecursorSelectionStrategy" FriendlyName="Precursor Selection" Category="1. General Settings" IsAdvanced="False" IsValueSet="True">Use MS1 Precursor</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="UseNewPrecursorPeakReevaluation" FriendlyName="Use New Precursor Reevaluation" Category="1. General Settings" IsAdvanced="True" IsValueSet="True">True</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="LowerRetentionTimeLimit" FriendlyName="Lower RT Limit" Category="2. Spectrum Properties Filter" IsAdvanced="False" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="UpperRetentionTimeLimit" FriendlyName="Upper RT Limit" Category="2. Spectrum Properties Filter" IsAdvanced="False" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="FirstScan" FriendlyName="First Scan" Category="2. Spectrum Properties Filter" IsAdvanced="False" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="LastScan" FriendlyName="Last Scan" Category="2. Spectrum Properties Filter" IsAdvanced="False" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="LowestChargeState" FriendlyName="Lowest Charge State" Category="2. Spectrum Properties Filter" IsAdvanced="False" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="HighestChargeState" FriendlyName="Highest Charge State" Category="2. Spectrum Properties Filter" IsAdvanced="False" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MinimumPrecursorMass" FriendlyName="Min. Precursor Mass" Category="2. Spectrum Properties Filter" IsAdvanced="False" IsValueSet="True">350 Da</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MaximumPrecursorMass" FriendlyName="Max. Precursor Mass" Category="2. Spectrum Properties Filter" IsAdvanced="False" IsValueSet="True">5000 Da</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="TotalIntensityThreshold" FriendlyName="Total Intensity Threshold" Category="2. Spectrum Properties Filter" IsAdvanced="False" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MinimumPeakCount" FriendlyName="Minimum Peak Count" Category="2. Spectrum Properties Filter" IsAdvanced="False" IsValueSet="True">1</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MassAnalyzerFilter" FriendlyName="Mass Analyzer" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="False">Any</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MSOrderFilter" FriendlyName="MS Order" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="True">Is MS2</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="ActivationTypeFilter" FriendlyName="Activation Type" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="True">Is CID</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MinimumCollisionEnergy" FriendlyName="Min. Collision Energy" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MaximumCollisionEnergy" FriendlyName="Max. Collision Energy" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="True">100</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="ScanTypeFilter" FriendlyName="Scan Type" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="True">Is Full</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="IonizationSourceFilter" FriendlyName="Ionization Source" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="False">Any</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="PolarityFilter" FriendlyName="Polarity Mode" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="False">Any</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="SignalToNoiseThreshold" FriendlyName="S/N Threshold (FT-only)" Category="4. Peak Filters" IsAdvanced="False" IsValueSet="True">1.5</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="UnrecognizedChargeReplacements" FriendlyName="Unrecognized Charge Replacements" Category="5. Replacements for Unrecognized Properties" IsAdvanced="False" IsValueSet="True">Automatic</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="UnrecognizedMassAnalyzerReplacement" FriendlyName="Unrecognized Mass Analyzer Replacements" Category="5. Replacements for Unrecognized Properties" IsAdvanced="False" IsValueSet="True">ITMS</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="UnrecognizedMsOrderReplacement" FriendlyName="Unrecognized MS Order Replacements" Category="5. Replacements for Unrecognized Properties" IsAdvanced="False" IsValueSet="True">MS2</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="UnrecognizedActivationTypeReplacement" FriendlyName="Unrecognized Activation Type Replacements" Category="5. Replacements for Unrecognized Properties" IsAdvanced="False" IsValueSet="True">CID</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="UnrecognizedPolarityTypeReplacement" FriendlyName="Unrecognized Polarity Replacements" Category="5. Replacements for Unrecognized Properties" IsAdvanced="False" IsValueSet="True">+</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="PrecursorClippigRangeBefore" FriendlyName="Precursor Clipping Range Before" Category="6. Just for Testing" IsAdvanced="True" IsValueSet="True">2.5 Da</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="PrecursorClippigRangeAfter" FriendlyName="Precursor Clipping Range After" Category="6. Just for Testing" IsAdvanced="True" IsValueSet="True">5.5 Da</ProcessingNodeParameter>
+			</ProcessingNodeParameters>
+		</WorkflowNode>
+		<WorkflowNode ProcessingNodeNumber="2" ProcessingNodeName="Mascot" FriendlyName="Mascot" Description="Perform a Mascot search." MainVersion="1" MinorVersion="30" Guid="7643d5ae-af3b-40c7-9be3-da9413336c93" Category="Sequence Database Search" ParentProcessingNodeNumber="1" ProteinIdentificationGroupID="2" Comment="">
+			<ProcessingNodeInterfaces>
+				<ProcessingNodeInterface Kind="Input" Name="ISpectrumSink" />
+				<ProcessingNodeInterface Kind="Output" Name="IPeptideAssignmentsSource" />
+				<ProcessingNodeInterface Kind="Output" Name="IResultValidationSource" />
+				<ProcessingNodeInterface Kind="Functional" Name="IProcessingNode" />
+			</ProcessingNodeInterfaces>
+			<ProcessingNodeParameters>
+				<ProcessingNodeParameter Name="Instrument" FriendlyName="Instrument" Category="1. Input Data" IsAdvanced="False" IsValueSet="True">ESI-TRAP</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="PeptideCutOffScore" FriendlyName="Peptide Cut Off Score" Category="1.1 Peptide Scoring Options" IsAdvanced="True" IsValueSet="True">10</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="PeptidesWithoutProteinsCutOffScore" FriendlyName="Peptide Without Protein Cut Off Score" Category="1.1 Peptide Scoring Options" IsAdvanced="True" IsValueSet="True">5</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="FragmentTolerance" FriendlyName="Fragment Mass Tolerance" Category="2. Tolerances" IsAdvanced="False" IsValueSet="True">0.8 Da</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="Database" FriendlyName="Protein Database" Category="1. Input Data" IsAdvanced="False" IsValueSet="True">SwissProt</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="Enzyme" FriendlyName="Enzyme Name" Category="1. Input Data" IsAdvanced="False" IsValueSet="True">Trypsin</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MissedCleavages" FriendlyName="Maximum Missed Cleavage Sites" Category="1. Input Data" IsAdvanced="False" IsValueSet="True">2</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="Taxonomy" FriendlyName="Taxonomy" Category="1. Input Data" IsAdvanced="False" IsValueSet="True">. . . . . . . . . . . . . . . . . . Mus musculus (house mouse)</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="UseMudPitScoring" FriendlyName="Use MudPIT Scoring" Category="1.2 Protein Scoring Options" IsAdvanced="True" IsValueSet="True">Automatic</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="ProteinCutOffScore" FriendlyName="Protein Relevance Threshold" Category="1.2 Protein Scoring Options" IsAdvanced="True" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="ProteinRelevanceFactor" FriendlyName="Protein Relevance Factor" Category="1.2 Protein Scoring Options" IsAdvanced="True" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="PeptideTolerance" FriendlyName="Precursor Mass Tolerance" Category="2. Tolerances" IsAdvanced="False" IsValueSet="True">10 ppm</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="UseAveragePrecursorMass" FriendlyName="Use Average Precursor Mass" Category="2. Tolerances" IsAdvanced="False" IsValueSet="True">False</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MascotQuanMethodName" FriendlyName="From Quan Method" Category="3. Modification Groups" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="DynMod_1" FriendlyName="1. Dynamic Modification" Category="4. Dynamic Modifications" IsAdvanced="False" IsValueSet="True">Oxidation (M)</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="DynMod_2" FriendlyName="2. Dynamic Modification" Category="4. Dynamic Modifications" IsAdvanced="False" IsValueSet="True">Phospho (ST)</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="DynMod_3" FriendlyName="3. Dynamic Modification" Category="4. Dynamic Modifications" IsAdvanced="False" IsValueSet="True">Phospho (Y)</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="DynMod_4" FriendlyName="4. Dynamic Modification" Category="4. Dynamic Modifications" IsAdvanced="False" IsValueSet="True">TMT10plex (K)</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="DynMod_5" FriendlyName="5. Dynamic Modification" Category="4. Dynamic Modifications" IsAdvanced="False" IsValueSet="True">TMT10plex (N-term)</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="DynMod_6" FriendlyName="6. Dynamic Modification" Category="4. Dynamic Modifications" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="DynMod_7" FriendlyName="7. Dynamic Modification" Category="4. Dynamic Modifications" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="DynMod_8" FriendlyName="8. Dynamic Modification" Category="4. Dynamic Modifications" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="DynMod_9" FriendlyName="9. Dynamic Modification" Category="4. Dynamic Modifications" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="StaticMod_1" FriendlyName="1. Static Modification" Category="5. Static Modifications" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="StaticMod_2" FriendlyName="2. Static Modification" Category="5. Static Modifications" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="StaticMod_3" FriendlyName="3. Static Modification" Category="5. Static Modifications" IsAdvanced="False" IsValueSet="True">Carbamidomethyl (C)</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="StaticMod_4" FriendlyName="4. Static Modification" Category="5. Static Modifications" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="StaticMod_5" FriendlyName="5. Static Modification" Category="5. Static Modifications" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="StaticMod_6" FriendlyName="6. Static Modification" Category="5. Static Modifications" IsAdvanced="False" IsValueSet="False"></ProcessingNodeParameter>
+			</ProcessingNodeParameters>
+		</WorkflowNode>
+		<WorkflowNode ProcessingNodeNumber="5" ProcessingNodeName="PTMSiteScorerNode" FriendlyName="phosphoRS 3.0" Description="Optimized high-sensitivity phospho-site localization tool determining individual site probabilities." MainVersion="3" MinorVersion="2" Guid="0787547a-095f-4721-bbb2-83a59ea52e13" Category="PTM Analysis" ParentProcessingNodeNumber="2" ProteinIdentificationGroupID="5" Comment="">
+			<ProcessingNodeInterfaces>
+				<ProcessingNodeInterface Kind="Functional" Name="IProcessingNode" />
+			</ProcessingNodeInterfaces>
+			<ProcessingNodeParameters>
+				<ProcessingNodeParameter Name="UseDefaultTolerance" FriendlyName="Use Fragment Mass Tolerance of Search Node" Category="1. Scoring" IsAdvanced="True" IsValueSet="True">True</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="FragmentTolerance" FriendlyName="Fragment Mass Tolerance" Category="1. Scoring" IsAdvanced="True" IsValueSet="True">0.5 Da</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="ScoreNLPeaksToo" FriendlyName="Consider neutral loss peaks for CID and HCD" Category="1. Scoring" IsAdvanced="True" IsValueSet="True">Automatic</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MaxIsoformCount" FriendlyName="Maximum Position Isoforms" Category="2. Performance" IsAdvanced="True" IsValueSet="True">200</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MaxPTMCount" FriendlyName="Maximum PTMs per peptide" Category="2. Performance" IsAdvanced="True" IsValueSet="True">10</ProcessingNodeParameter>
+			</ProcessingNodeParameters>
+		</WorkflowNode>
+		<WorkflowNode ProcessingNodeNumber="3" ProcessingNodeName="PercolatorNode" FriendlyName="Percolator" Description="Performs Percolator Validation" MainVersion="2" MinorVersion="0" Guid="edabd112-fc32-4d12-bb89-7bd90e3bb935" Category="PSM Validation" ParentProcessingNodeNumber="2" ProteinIdentificationGroupID="3" Comment="">
+			<ProcessingNodeInterfaces>
+				<ProcessingNodeInterface Kind="Input" Name="IResultValidationSink" />
+				<ProcessingNodeInterface Kind="Functional" Name="IProcessingNode" />
+			</ProcessingNodeInterfaces>
+			<ProcessingNodeParameters>
+				<ProcessingNodeParameter Name="MaximumDeltaCn" FriendlyName="Maximum Delta Cn" Category="1. Input Data" IsAdvanced="False" IsValueSet="True">0.05</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="TargetFPRHigh" FriendlyName="Target FDR (Strict)" Category="2. Decoy Database Search" IsAdvanced="False" IsValueSet="True">0.01</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="TargetFPRMiddle" FriendlyName="Target FDR (Relaxed)" Category="2. Decoy Database Search" IsAdvanced="False" IsValueSet="True">0.05</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="ValidationBasedOn" FriendlyName="Validation based on" Category="2. Decoy Database Search" IsAdvanced="False" IsValueSet="True">q-Value</ProcessingNodeParameter>
+			</ProcessingNodeParameters>
+		</WorkflowNode>
+		<WorkflowNode ProcessingNodeNumber="4" ProcessingNodeName="ReporterIonQuantifierNode" FriendlyName="Reporter Ions Quantifier" Description="Retrieves and processes the quantitative data for reporter ion based quantification methods." MainVersion="1" MinorVersion="6" Guid="eadda5fc-96c4-4961-92b5-5d19937c2096" Category="Quantification" ParentProcessingNodeNumber="0" ProteinIdentificationGroupID="4" Comment="">
+			<ProcessingNodeInterfaces>
+				<ProcessingNodeInterface Kind="Input" Name="ISpectrumFilesSink" />
+				<ProcessingNodeInterface Kind="Functional" Name="IProcessingNode" />
+			</ProcessingNodeInterfaces>
+			<ProcessingNodeParameters>
+				<ProcessingNodeParameter Name="QuantificationMethod" FriendlyName="Quantification Method" Category="1. Quantification Method" IsAdvanced="False" IsValueSet="True"><ProcessingMethod name="TMT 10plex" version="1" selected="MassTags" class="e56d856b-abc0-40ac-9aeb-c6f96c5fb188" description="Method for 10-plex Tandem Mass Tag® of Proteome Sciences plc" isActive="True" majorVersion="1" minorVersion="0">
+  <MethodPart name="MassTags" version="1" selected="126">
+    <Parameter name="ResidueModification">&lt;Modification Version="1" AminoAcids="K" Name="TMT6plex" Abbreviation="TMT6plex" ID="626" UnimodAccession="737" DeltaMass="229.16293" DeltaAverageMass="229.26340" IsSubstitution="False" LeavingGroup="" Substitution="H(20) C(8) 13C(4) N 15N O(2)" PositionType="Any" /&gt;</Parameter>
+    <Parameter name="NTerminalModification">&lt;Modification Version="1" Terminus="Any_N_Terminus" Name="TMT6plex" Abbreviation="TMT6plex" ID="627" UnimodAccession="737" DeltaMass="229.16293" DeltaAverageMass="229.26340" IsSubstitution="False" LeavingGroup="" Substitution="H(20) C(8) 13C(4) N 15N O(2)" PositionType="Any_N_Terminus" /&gt;</Parameter>
+    <MethodPart name="126" version="1" selected="CorrectionFactors">
+      <Parameter name="TagID">1</Parameter>
+      <Parameter name="TagName">126</Parameter>
+      <Parameter name="MonoisotopicMZ">126.127725</Parameter>
+      <Parameter name="AverageMZ">126.2193</Parameter>
+      <MethodPart name="CorrectionFactors" version="1" />
+    </MethodPart>
+    <MethodPart name="127_N" version="1" selected="CorrectionFactors">
+      <Parameter name="TagID">2</Parameter>
+      <Parameter name="TagName">127_N</Parameter>
+      <Parameter name="MonoisotopicMZ">127.12476</Parameter>
+      <Parameter name="AverageMZ">127.2127</Parameter>
+      <MethodPart name="CorrectionFactors" version="1" />
+    </MethodPart>
+    <MethodPart name="127_C" version="1" selected="CorrectionFactors">
+      <Parameter name="TagID">3</Parameter>
+      <Parameter name="TagName">127_C</Parameter>
+      <Parameter name="MonoisotopicMZ">127.131079</Parameter>
+      <Parameter name="AverageMZ">127.2114</Parameter>
+      <MethodPart name="CorrectionFactors" version="1" />
+    </MethodPart>
+    <MethodPart name="128_N" version="1" selected="CorrectionFactors">
+      <Parameter name="TagID">4</Parameter>
+      <Parameter name="TagName">128_N</Parameter>
+      <Parameter name="MonoisotopicMZ">128.128115</Parameter>
+      <Parameter name="AverageMZ">128.204</Parameter>
+      <MethodPart name="CorrectionFactors" version="1" />
+    </MethodPart>
+    <MethodPart name="128_C" version="1" selected="CorrectionFactors">
+      <Parameter name="TagID">5</Parameter>
+      <Parameter name="TagName">128_C</Parameter>
+      <Parameter name="MonoisotopicMZ">128.134433</Parameter>
+      <Parameter name="AverageMZ">128.2046</Parameter>
+      <MethodPart name="CorrectionFactors" version="1" />
+    </MethodPart>
+    <MethodPart name="129_N" version="1" selected="CorrectionFactors">
+      <Parameter name="TagID">6</Parameter>
+      <Parameter name="TagName">129_N</Parameter>
+      <Parameter name="MonoisotopicMZ">129.131468</Parameter>
+      <Parameter name="AverageMZ">129.1981</Parameter>
+      <MethodPart name="CorrectionFactors" version="1" />
+    </MethodPart>
+    <MethodPart name="129_C" version="1" selected="CorrectionFactors">
+      <Parameter name="TagID">7</Parameter>
+      <Parameter name="TagName">129_C</Parameter>
+      <Parameter name="MonoisotopicMZ">129.13779</Parameter>
+      <Parameter name="AverageMZ">129.1976</Parameter>
+      <MethodPart name="CorrectionFactors" version="1" />
+    </MethodPart>
+    <MethodPart name="130_N" version="1" selected="CorrectionFactors">
+      <Parameter name="TagID">8</Parameter>
+      <Parameter name="TagName">130_N</Parameter>
+      <Parameter name="MonoisotopicMZ">130.134825</Parameter>
+      <Parameter name="AverageMZ">130.1896</Parameter>
+      <MethodPart name="CorrectionFactors" version="1" />
+    </MethodPart>
+    <MethodPart name="130_C" version="1" selected="CorrectionFactors">
+      <Parameter name="TagID">9</Parameter>
+      <Parameter name="TagName">130_C</Parameter>
+      <Parameter name="MonoisotopicMZ">130.141141</Parameter>
+      <Parameter name="AverageMZ">130.19</Parameter>
+      <MethodPart name="CorrectionFactors" version="1" />
+    </MethodPart>
+    <MethodPart name="131" version="1" selected="CorrectionFactors">
+      <Parameter name="TagID">10</Parameter>
+      <Parameter name="TagName">131</Parameter>
+      <Parameter name="MonoisotopicMZ">131.138176</Parameter>
+      <Parameter name="AverageMZ">131.1834</Parameter>
+      <MethodPart name="CorrectionFactors" version="1" />
+    </MethodPart>
+  </MethodPart>
+  <MethodPart name="RatioReporting" version="1" selected="127_C/126">
+    <MethodPart name="127_C/126" version="1">
+      <Parameter name="RatioName">127_C/126</Parameter>
+      <Parameter name="Numerator">127_C</Parameter>
+      <Parameter name="Denominator">126</Parameter>
+    </MethodPart>
+    <MethodPart name="127_N/126" version="1">
+      <Parameter name="RatioName">127_N/126</Parameter>
+      <Parameter name="Numerator">127_N</Parameter>
+      <Parameter name="Denominator">126</Parameter>
+    </MethodPart>
+    <MethodPart name="128_C/126" version="1">
+      <Parameter name="RatioName">128_C/126</Parameter>
+      <Parameter name="Numerator">128_C</Parameter>
+      <Parameter name="Denominator">126</Parameter>
+    </MethodPart>
+    <MethodPart name="128_N/126" version="1">
+      <Parameter name="RatioName">128_N/126</Parameter>
+      <Parameter name="Numerator">128_N</Parameter>
+      <Parameter name="Denominator">126</Parameter>
+    </MethodPart>
+    <MethodPart name="129_C/126" version="1">
+      <Parameter name="RatioName">129_C/126</Parameter>
+      <Parameter name="Numerator">129_C</Parameter>
+      <Parameter name="Denominator">126</Parameter>
+    </MethodPart>
+    <MethodPart name="129_N/126" version="1">
+      <Parameter name="RatioName">129_N/126</Parameter>
+      <Parameter name="Numerator">129_N</Parameter>
+      <Parameter name="Denominator">126</Parameter>
+    </MethodPart>
+    <MethodPart name="130_C/126" version="1">
+      <Parameter name="RatioName">130_C/126</Parameter>
+      <Parameter name="Numerator">130_C</Parameter>
+      <Parameter name="Denominator">126</Parameter>
+    </MethodPart>
+    <MethodPart name="130_N/126" version="1">
+      <Parameter name="RatioName">130_N/126</Parameter>
+      <Parameter name="Numerator">130_N</Parameter>
+      <Parameter name="Denominator">126</Parameter>
+    </MethodPart>
+    <MethodPart name="131/126" version="1">
+      <Parameter name="RatioName">131/126</Parameter>
+      <Parameter name="Numerator">131</Parameter>
+      <Parameter name="Denominator">126</Parameter>
+    </MethodPart>
+  </MethodPart>
+  <MethodPart name="RatioCalculation" version="4">
+    <Parameter name="ShowRawQuanValues">False</Parameter>
+    <Parameter name="MinimumQuanValueThreshold">0</Parameter>
+    <Parameter name="ReplaceMissingReporterIntensitiesWithMinimum">False</Parameter>
+    <Parameter name="UseSinglePeakQuanChannels">False</Parameter>
+    <Parameter name="ApplyQuanValueCorrections">False</Parameter>
+    <Parameter name="RejectQuanValuesIfNotAllQuanChannelsArePresent">False</Parameter>
+    <Parameter name="UpDownRegulationThreshold">2</Parameter>
+    <Parameter name="MaximumAllowedFoldChange">100</Parameter>
+    <Parameter name="UseExtremeRatiosForQuantitation">False</Parameter>
+    <Parameter name="IsolationInterferenceThreshold">100</Parameter>
+  </MethodPart>
+  <MethodPart name="ProteinQuantitation" version="2" selected="UseOnlyUniquePeptides">
+    <Parameter name="ShowPeptideRatioCounts">True</Parameter>
+    <Parameter name="ShowVariabilities">True</Parameter>
+    <Parameter name="ConsiderProteinGroupsForPeptideUniqueness">True</Parameter>
+    <MethodPart name="UseOnlyUniquePeptides" version="2" />
+    <MethodPart name="UseAllPeptides" version="1" />
+  </MethodPart>
+  <MethodPart name="ExperimentalBias" version="1" selected="NoneMethod">
+    <MethodPart name="NoneMethod" version="1" />
+    <MethodPart name="NormalizeOnProteinMedian" version="1">
+      <Parameter name="MinimumProteinCount">20</Parameter>
+    </MethodPart>
+    <MethodPart name="ManualNormalization" version="1">
+      <Parameter name="NormalizationFactor">1</Parameter>
+    </MethodPart>
+  </MethodPart>
+  <MethodPart name="OutlierDetection" version="1" selected="NoneMethod">
+    <MethodPart name="NoneMethod" version="1" />
+  </MethodPart>
+</ProcessingMethod></ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="IntegrationWindowTolerance" FriendlyName="Integration Tolerance" Category="2. Peak Integration" IsAdvanced="False" IsValueSet="True">20 ppm</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="IntegrationMethod" FriendlyName="Integration Method" Category="2. Peak Integration" IsAdvanced="False" IsValueSet="True">Most Confident Centroid</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MassAnalyzerFilter" FriendlyName="Mass Analyzer" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="True">FTMS</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MSOrderFilter" FriendlyName="MS Order" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="True">MS2</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="ActivationTypeFilter" FriendlyName="Activation Type" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="True">HCD</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MinimumCollisionEnergy" FriendlyName="Min. Collision Energy" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="True">0</ProcessingNodeParameter>
+				<ProcessingNodeParameter Name="MaximumCollisionEnergy" FriendlyName="Max. Collision Energy" Category="3. Scan Event Filters" IsAdvanced="False" IsValueSet="True">1000</ProcessingNodeParameter>
+			</ProcessingNodeParameters>
+		</WorkflowNode>
+	</WorkflowTree>
+</Workflow>
